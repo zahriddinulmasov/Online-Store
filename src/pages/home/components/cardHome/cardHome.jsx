@@ -3,16 +3,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import { useParams } from "react-router-dom";
 
 export const CardHome = ({ img, title, price, selected, id }) => {
-
   return (
     <>
       <Card
         sx={{
           margin: { xs: "3px", sm: "5px", md: "8px", lg: "10px" },
-          width: {xs: "139px", sm: "155px", md: "175px", lg: "210px"},
+          width: { xs: "139px", sm: "155px", md: "175px", lg: "210px" },
           background: "white",
         }}
       >
@@ -21,7 +19,11 @@ export const CardHome = ({ img, title, price, selected, id }) => {
             component="img"
             image={img}
             alt="green iguana"
-            sx={{m: "8px auto 0", height: { xs: "130px", sm: "140px", md: "155px", lg: "180px" }, width: "auto" }}
+            sx={{
+              m: "8px auto 0",
+              height: { xs: "130px", sm: "140px", md: "155px", lg: "180px" },
+              width: "auto",
+            }}
           />
           <CardContent
             sx={{
@@ -38,7 +40,7 @@ export const CardHome = ({ img, title, price, selected, id }) => {
                 fontWeight: 500,
                 fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 lineHeight: { xs: "14px", sm: "16px", md: "18px" },
-                height: {xs: "28px", sm: "32px", md: "36px"},
+                height: { xs: "28px", sm: "32px", md: "36px" },
                 overflow: "hidden",
               }}
             >
