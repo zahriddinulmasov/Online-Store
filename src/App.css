@@ -1,0 +1,37 @@
+@font-face {
+  font-display: swap;
+  font-family: "IBM Plex Sans Arabic";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/ibm-plex-sans-arabic-v9-latin_cyrillic-ext-regular.woff2")
+      format("woff2"),
+    url("./assets/fonts/ibm-plex-sans-arabic-v9-latin_cyrillic-ext-regular.woff")
+      format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "IBM Plex Sans Arabic";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./assets/fonts/ibm-plex-sans-arabic-v9-latin_cyrillic-ext-500.woff2")
+      format("woff2"),
+    url("./assets/fonts/ibm-plex-sans-arabic-v9-latin_cyrillic-ext-500.woff")
+      format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "IBM Plex Sans Arabic";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/ibm-plex-sans-arabic-v9-latin_cyrillic-ext-700.woff2")
+      format("woff2"),
+    url("./assets/fonts/ibm-plex-sans-arabic-v9-latin_cyrillic-ext-700.woff")
+      format("woff");
+}
+
+.App {
+  max-width: 1188px;
+  margin: 0 auto;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-size: 16px;
+}

@@ -1,0 +1,16 @@
+.headerLink {
+  font-weight: 500;
+  line-height: 18px;
+  color: #000000;
+
+  &:hover {
+    background-color: gainsboro;
+    transition: all 0.3s;
+  }
+
+  &.active {
+    color: #4e72ca;
+    border-bottom: 2px solid blue;
+    background-color: inherit;
+  }
+}
