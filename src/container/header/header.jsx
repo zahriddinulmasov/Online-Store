@@ -190,7 +190,7 @@ export const Header = () => {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
-                  src="/static/images/avatar/2.jpg"
+                  src=""
                   sx={{
                     width: { xs: "36px", sm: "40px" },
                     height: { xs: "36px", sm: "40px" },

@@ -39,7 +39,7 @@ export const CardHome = ({ img, title, price, selected, id }) => {
                 fontFamily: "IBM Plex Sans Arabic",
                 fontWeight: 500,
                 fontSize: { xs: "12px", sm: "14px", md: "16px" },
-                lineHeight: { xs: "14px", sm: "16px", md: "18px" },
+                lineHeight: { xs: "15px", sm: "16px", md: "18px" },
                 height: { xs: "28px", sm: "32px", md: "36px" },
                 overflow: "hidden",
               }}
