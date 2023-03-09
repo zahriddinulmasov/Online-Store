@@ -5,13 +5,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { CardHome } from "../../../home/components/cardHome";
 import { mainInformationActions } from "../../../../store/commonData";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const SingleProductSwiper = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
-
 
   const singleProductCardSelector = useSelector(
     (state) => state.commonData.singleProductCatigory
@@ -19,12 +18,14 @@ export const SingleProductSwiper = () => {
   // console.log("aaaaaaa");
 
   useEffect(() => {
-    fetch(
-      `https://fakestoreapi.com/products/category/${singleProductCardSelector.category}`
-    )
-      .then((res) => res.json())
+    axios
+      .get(
+        process.env.REACT_APP_URL +
+          "/category" +
+          `/${singleProductCardSelector.category}`
+      )
       .then((data) => {
-        dispatch(mainInformationActions.singleProductCard(data));
+        dispatch(mainInformationActions.singleProductCard(data.data));
       })
       .catch((err) => console.log(err));
     // eslint-disable-next-line

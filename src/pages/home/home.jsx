@@ -7,15 +7,15 @@ import { Catigories } from "./container/catigories";
 import { ProductTypes } from "./container/productTypes";
 
 import {AppHome} from "./container/appHome"
+import axios from "axios";
 
 export const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-    .then(res => res.json())
+    axios.get(process.env.REACT_APP_URL)
       .then((data) => {
-        dispatch(mainInformationActions.setInformations(data));
+        dispatch(mainInformationActions.setInformations(data.data));
       })
       .catch((err) => console.log(err));
     // eslint-disable-next-line

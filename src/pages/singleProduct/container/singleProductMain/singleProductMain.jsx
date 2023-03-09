@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -22,12 +23,13 @@ export const SingleProductMain = () => {
   const [data, setData] = useState([]);
   const [number1, setNumber1] = useState("** **");
   const [number2, setNumber2] = useState("** **");
-  const params = useParams();
+  const params = useParams().homeId;
+  console.log( params);
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${params.homeId}`)
-      .then((res) => res.json())
-      .then((data) => setData(data))
+    axios
+      .get(process.env.REACT_APP_URL + `/${params}`)
+      .then((data) => setData(data.data))
       .catch((err) => console.log(err));
   }, [data]);
 
