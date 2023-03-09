@@ -35,7 +35,7 @@ export const CardHome = ({ img, title, price, selected, id }) => {
               variant="h5"
               component="div"
               sx={{
-                mb: { xs: "6px", sm: "8px", md: "10px" },
+                mb: { xs: "9px", sm: "8px", md: "10px" },
                 fontFamily: "IBM Plex Sans Arabic",
                 fontWeight: 500,
                 fontSize: { xs: "12px", sm: "14px", md: "16px" },
