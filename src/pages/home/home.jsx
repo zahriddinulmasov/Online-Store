@@ -19,7 +19,7 @@ export const Home = () => {
         dispatch(mainInformationActions.setInformations(data.data));
       })
       .catch((err) => console.log(err));
-           // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return (
