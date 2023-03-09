@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
+
 import { CardMedia, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 import siteLogo from "../../../../assets/images/kivi.svg";
 import appleIcon from "../../../../assets/images/appleIcon.svg";
 import playMarket from "../../../../assets/images/playMarket.svg";
-import { Link } from "react-router-dom";
 
 export const AppHome = () => {
   return (
@@ -16,7 +17,6 @@ export const AppHome = () => {
             sm: "15px 24px 15px",
             md: "25px 24px 20px",
           },
-          background: "#F2F2F2",
           display: "flex",
           justifyContent: "space-between",
         }}
@@ -48,7 +48,7 @@ export const AppHome = () => {
               flexGrow: 1,
               fontFamily: "IBM Plex Sans Arabic",
               fontWeight: 700,
-              color: "#000000",
+              color: "inherit",
               textDecoration: "none",
               maxWidth: "165px",
               lineHeight: "14px",

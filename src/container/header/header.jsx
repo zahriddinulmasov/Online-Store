@@ -49,7 +49,7 @@ export const Header = () => {
   };
 
   return (
-    <AppBar style={{ background: "#F2F2F2" }}>
+    <AppBar style={{ background: "white" }}>
       <Container sx={{ padding: "0 20px" }}>
         <Toolbar disableGutters>
           <CardMedia

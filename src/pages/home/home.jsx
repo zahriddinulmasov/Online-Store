@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -13,10 +12,10 @@ export const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_URL)
+    fetch("https://fakestoreapi.com/products")
+    .then(res => res.json())
       .then((data) => {
-        dispatch(mainInformationActions.setInformations(data.data));
+        dispatch(mainInformationActions.setInformations(data));
       })
       .catch((err) => console.log(err));
     // eslint-disable-next-line

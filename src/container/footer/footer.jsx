@@ -172,9 +172,9 @@ export const Footer = () => {
       <Box
         sx={{
           p: {
-            xs: "20px 20px",
-            sm: "25px 24px",
-            md: "30px 24px",
+            xs: "5px 20px",
+            sm: "10px 23px",
+            md: "15px 24px",
           },
           background: "#33383C",
           display: "flex",
@@ -203,12 +203,13 @@ export const Footer = () => {
                   lineHeight: { xs: "15px", sm: "16px", md: "17px" },
                   color: "#FFFFFF",
                   p: 0,
+                  m: 0
                 }}
               >
-                Electronics
+                Электроника
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails >
               {electronics.map((item) => (
                 <Link to="/" key={item.id} style={{ textDecoration: "none" }}>
                   <Typography

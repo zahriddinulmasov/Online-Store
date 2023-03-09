@@ -39,9 +39,9 @@ export const FooterBottom = () => {
       <Box
         sx={{
           p: {
-            xs: "20px 20px ",
-            sm: "22px 24px ",
-            md: "25px 24px ",
+            xs: "15px 20px ",
+            sm: "17px 24px ",
+            md: "18px 24px ",
           },
           background: "#33383C",
           display: "flex",

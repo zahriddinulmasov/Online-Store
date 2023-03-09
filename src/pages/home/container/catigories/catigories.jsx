@@ -55,7 +55,7 @@ export const Catigories = () => {
     }
   };
 
- const informations = useSelector((state) => state.commonData.information);
+  const informations = useSelector((state) => state.commonData.information);
 
   const copyInformations = informations.slice(0, showMore);
 
@@ -81,14 +81,14 @@ export const Catigories = () => {
     setValue(newValue);
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const  selectedProduct = (id) => {
-    navigate(`/home/${id}/single-product`)
-  }
+  const selectedProduct = (id) => {
+    navigate(`/home/${id}/single-product`);
+  };
 
   return (
-    <Box sx={{ background: "#F2F2F2", mt: "56px" }}>
+    <Box sx={{ mt: "56px" }}>
       <Box
         sx={{
           p: {
@@ -374,7 +374,13 @@ export const Catigories = () => {
             key={item.id}
             sx={{ width: "100%" }}
           >
-            <CardHome title={item.title} img={item.image} price={item.price} id={item.id} selected={selectedProduct.bind(null, item.id)}/>
+            <CardHome
+              title={item.title}
+              img={item.image}
+              price={item.price}
+              id={item.id}
+              selected={selectedProduct.bind(null, item.id)}
+            />
           </TabPanel>
         ))}
 
@@ -385,7 +391,13 @@ export const Catigories = () => {
             key={item.id}
             sx={{ width: "100%" }}
           >
-            <CardHome title={item.title} img={item.image} price={item.price} />
+            <CardHome
+              title={item.title}
+              img={item.image}
+              price={item.price}
+              id={item.id}
+              selected={selectedProduct.bind(null, item.id)}
+            />
           </TabPanel>
         ))}
 
@@ -396,7 +408,13 @@ export const Catigories = () => {
             key={item.id}
             sx={{ width: "100%" }}
           >
-            <CardHome title={item.title} img={item.image} price={item.price} />
+            <CardHome
+              title={item.title}
+              img={item.image}
+              price={item.price}
+              id={item.id}
+              selected={selectedProduct.bind(null, item.id)}
+            />
           </TabPanel>
         ))}
 
@@ -407,7 +425,13 @@ export const Catigories = () => {
             key={item.id}
             sx={{ width: "100%" }}
           >
-            <CardHome title={item.title} img={item.image} price={item.price} />
+            <CardHome
+              title={item.title}
+              img={item.image}
+              price={item.price}
+              id={item.id}
+              selected={selectedProduct.bind(null, item.id)}
+            />
           </TabPanel>
         ))}
 
@@ -418,7 +442,13 @@ export const Catigories = () => {
             key={item.id}
             sx={{ width: "100%" }}
           >
-            <CardHome title={item.title} img={item.image} price={item.price} />
+            <CardHome
+              title={item.title}
+              img={item.image}
+              price={item.price}
+              id={item.id}
+              selected={selectedProduct.bind(null, item.id)}
+            />
           </TabPanel>
         ))}
       </Box>

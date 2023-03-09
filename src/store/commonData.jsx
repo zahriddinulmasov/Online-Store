@@ -5,6 +5,8 @@ const name = "common";
 const initialState = {
   error: null,
   information: [],
+  singleProduct: [],
+  singleProductCatigory: "",
 };
 
 export const {
@@ -16,6 +18,12 @@ export const {
   reducers: {
     setInformations(state, action) {
       state.information = action.payload;
+    },
+    singleProductCard(state, action){
+      state.singleProduct = action.payload
+    },
+    setSingleProductCatigory(state, action) {
+      state.singleProductCatigory = action.payload;
     },
   },
 });
