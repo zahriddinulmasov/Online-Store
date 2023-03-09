@@ -20,28 +20,24 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { mainInformationActions } from "../../../../store/commonData";
 
 export const SingleProductMain = () => {
+  const dispatch = useDispatch();
+  const params = useParams().homeId;
   const [data, setData] = useState([]);
   const [number1, setNumber1] = useState("** **");
   const [number2, setNumber2] = useState("** **");
-  const params = useParams().homeId;
-  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_URL + `/${params}`)
       .then((data) => {
-        setData(data.data)
+        setData(data.data);
         dispatch(mainInformationActions.setSingleProductCatigory(data.data));
       })
       .catch((err) => console.log(err));
+        // eslint-disable-next-line
   }, [params]);
 
-  // const data = useSelector((state) => state.commonData.singleProductCatigory);
   console.log(params, data);
-
-  // useEffect(() => {
-  //   dispatch(mainInformationActions.setSingleProductCatigory(data));
-  // }, [data]);
 
   function changeHiddenNumber1() {
     if (number1 !== "66 66") {

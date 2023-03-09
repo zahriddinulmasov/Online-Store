@@ -477,7 +477,11 @@ export const Catigories = () => {
             fontWeight: 600,
           }}
         >
-          Покозать еще
+          {showMore === 15 ? (
+            "Покозать еще"
+          ) : (
+            "Вернуть"
+          )}
           {showMore === 15 ? (
             <KeyboardArrowDownIcon sx={{ ml: "6px" }} />
           ) : (
