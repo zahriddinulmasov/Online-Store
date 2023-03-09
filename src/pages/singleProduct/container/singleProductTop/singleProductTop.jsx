@@ -188,7 +188,7 @@ export const SingleProductTop = () => {
           <Button
             variant="contained"
             sx={{
-              height: {xs: "35px", sm: "40px", md: "45px"},
+              height: {xs: "34.5px", sm: "40px", md: "45px"},
               background: "#19D476",
               borderRadius: "22px",
               ":hover": { background: "#19D476", opacity: 0.8 },
