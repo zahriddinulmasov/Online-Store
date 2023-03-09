@@ -24,20 +24,24 @@ export const SingleProductMain = () => {
   const [number1, setNumber1] = useState("** **");
   const [number2, setNumber2] = useState("** **");
   const params = useParams().homeId;
-  console.log( params);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_URL + `/${params}`)
-      .then((data) => setData(data.data))
+      .then((data) => {
+        setData(data.data)
+        dispatch(mainInformationActions.setSingleProductCatigory(data.data));
+      })
       .catch((err) => console.log(err));
-  }, [data]);
+  }, [params]);
 
-  const dispatch = useDispatch();
+  // const data = useSelector((state) => state.commonData.singleProductCatigory);
+  console.log(params, data);
 
-  useEffect(() => {
-    dispatch(mainInformationActions.setSingleProductCatigory(data));
-  }, [data]);
+  // useEffect(() => {
+  //   dispatch(mainInformationActions.setSingleProductCatigory(data));
+  // }, [data]);
 
   function changeHiddenNumber1() {
     if (number1 !== "66 66") {

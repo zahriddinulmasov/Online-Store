@@ -15,7 +15,6 @@ export const SingleProductSwiper = () => {
   const singleProductCardSelector = useSelector(
     (state) => state.commonData.singleProductCatigory
   );
-  // console.log("aaaaaaa");
 
   useEffect(() => {
     axios
@@ -41,6 +40,8 @@ export const SingleProductSwiper = () => {
   const selectedProduct = (id) => {
     navigate(`/home/${id}/single-product`);
   };
+
+
 
   return (
     <Swiper

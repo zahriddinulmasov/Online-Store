@@ -9,7 +9,6 @@ export const SingleProductCardSwiperAuthor = () => {
   const singleProductCard = [
     useSelector((state) => state.commonData.singleProductCatigory),
   ];
-  // console.log("dddddd");
 
   const selectedProduct = (id) => {
     navigate(`/home/${id}/single-product`);
