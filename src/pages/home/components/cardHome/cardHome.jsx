@@ -35,12 +35,12 @@ export const CardHome = ({ img, title, price, selected, id }) => {
               variant="h5"
               component="div"
               sx={{
-                mb: { xs: "9px", sm: "8px", md: "10px" },
+                mb: { xs: "8px", sm: "8px", md: "10px" },
                 fontFamily: "IBM Plex Sans Arabic",
                 fontWeight: 500,
                 fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 lineHeight: { xs: "15px", sm: "16px", md: "18px" },
-                height: { xs: "28px", sm: "32px", md: "36px" },
+                height: { xs: "27px", sm: "32px", md: "36px" },
                 overflow: "hidden",
               }}
             >
