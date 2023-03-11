@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import axios from "axios";
 import { useDispatch } from "react-redux";
 
 import Box from "@mui/material/Box";
@@ -7,7 +8,6 @@ import { Catigories } from "./container/catigories";
 import { ProductTypes } from "./container/productTypes";
 
 import { AppHome } from "./container/appHome";
-import axios from "axios";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -23,12 +23,10 @@ export const Home = () => {
   }, []);
 
   return (
-    <>
-      <Box>
-        <Catigories />
-        <ProductTypes />
-        <AppHome />
-      </Box>
-    </>
+    <Box>
+      <Catigories />
+      <ProductTypes />
+      <AppHome />
+    </Box>
   );
 };

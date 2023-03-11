@@ -1,11 +1,8 @@
-import {  useSelector } from "react-redux";
+import { Box } from "@mui/system";
+import { TopAnnouncements } from "./container/topAnnouncements";
 
 export const Announcements = () => {
-  const informations = useSelector((state) => state.commonData.information);
-
-  return (
-    <>
-      {informations.map(item => (<h1>{item.title}</h1>))}
-    </>
-  );
+  return (<Box sx={{ mt: "79px" }}>
+    <TopAnnouncements/>
+  </Box>);
 };

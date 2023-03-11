@@ -480,7 +480,7 @@ export const Catigories = () => {
           {showMore === 15 ? (
             "Покозать еще"
           ) : (
-            "Вернуть"
+            "Свернуть"
           )}
           {showMore === 15 ? (
             <KeyboardArrowDownIcon sx={{ ml: "6px" }} />

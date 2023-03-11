@@ -4,6 +4,7 @@ import Select from "@mui/material/Select";
 import { Box, Button, OutlinedInput, Tooltip, Typography } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
+// import { useSelector } from "react-redux";
 
 const regions = [
   {
@@ -64,6 +65,34 @@ const regions = [
   },
 ];
 
+const categories = [
+  {
+    name: "Любая категория",
+    value: "",
+    id: 1,
+  },
+  {
+    name: "Электроника",
+    value: "electronics",
+    id: 2,
+  },
+  {
+    name: "Украшения",
+    value: "jewelery",
+    id: 3,
+  },
+  {
+    name: "Мужская одежда",
+    value: "men's clothing",
+    id: 4,
+  },
+  {
+    name: "Женская одежда",
+    value: "women's clothing",
+    id: 5,
+  },
+];
+
 const styleSelectItems = {
   fontFamily: "IBM Plex Sans Arabic",
   fontWeight: 500,
@@ -76,9 +105,14 @@ export const SingleProductTop = () => {
   const [age, setAge] = useState("");
   const [category, setCategory] = useState("");
 
+
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  // const categorySelector = useSelector((state) => state.commonData.information);
+  // const categoryArr = categorySelector.filter((item) => item.category === age);
+  // console.log(categoryArr);
 
   const handleChangeCategory = (event) => {
     setCategory(event.target.value);
@@ -112,7 +146,7 @@ export const SingleProductTop = () => {
             inputProps={{ "aria-label": "Without label" }}
             sx={{
               pl: "4px",
-              height: {xs: "35px", sm: "40px", md: "45px"},
+              height: { xs: "35px", sm: "40px", md: "45px" },
               border: "none",
               borderRadius: "22px  0 0 22px",
               width: "50%",
@@ -123,21 +157,11 @@ export const SingleProductTop = () => {
               color: "#000",
             }}
           >
-            <MenuItem value="" sx={styleSelectItems}>
-              Любая категория
-            </MenuItem>
-            <MenuItem value={1} sx={styleSelectItems}>
-              Электроника
-            </MenuItem>
-            <MenuItem value={2} sx={styleSelectItems}>
-              Украшения
-            </MenuItem>
-            <MenuItem value={3} sx={styleSelectItems}>
-              Мужская одежда
-            </MenuItem>
-            <MenuItem value={4} sx={styleSelectItems}>
-              Женская одежда
-            </MenuItem>
+            {categories.map((item) => (
+              <MenuItem value={item.value} key={item.id} sx={styleSelectItems}>
+                {item.name}
+              </MenuItem>
+            ))}
           </Select>
 
           <Select
@@ -147,7 +171,7 @@ export const SingleProductTop = () => {
             inputProps={{ "aria-label": "Without label" }}
             sx={{
               pl: "4px",
-              height: {xs: "35px", sm: "40px", md: "45px"},
+              height: { xs: "35px", sm: "40px", md: "45px" },
               borderRadius: { xs: "0 22px 22px 0", md: 0 },
               width: "50%",
               fontFamily: "IBM Plex Sans Arabic",
@@ -175,7 +199,7 @@ export const SingleProductTop = () => {
               pr: "70px",
               mr: { xs: "-88px", sm: "-108px" },
               borderRadius: { xs: "22px", md: "0 22px 22px 0" },
-              height: {xs: "35px", sm: "40px", md: "45px"},
+              height: { xs: "35px", sm: "40px", md: "45px" },
               width: { xs: "100%" },
               fontFamily: "IBM Plex Sans Arabic",
               fontWeight: 500,
@@ -188,7 +212,7 @@ export const SingleProductTop = () => {
           <Button
             variant="contained"
             sx={{
-              height: {xs: "34.5px", sm: "40px", md: "45px"},
+              height: { xs: "34.5px", sm: "40px", md: "45px" },
               background: "#19D476",
               borderRadius: "22px",
               ":hover": { background: "#19D476", opacity: 0.8 },
@@ -221,8 +245,8 @@ export const SingleProductTop = () => {
               <Box
                 component="span"
                 sx={{
-                  width: {xs: "35px", sm: "40px", md: "45px"},
-                  height: {xs: "35px", sm: "40px", md: "45px"},
+                  width: { xs: "35px", sm: "40px", md: "45px" },
+                  height: { xs: "35px", sm: "40px", md: "45px" },
                   background: "#11B463",
                   borderRadius: "50%",
                   display: "flex",

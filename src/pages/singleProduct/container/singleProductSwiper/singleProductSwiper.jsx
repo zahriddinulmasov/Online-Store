@@ -30,6 +30,16 @@ export const SingleProductSwiper = () => {
     // eslint-disable-next-line
   }, [singleProductCardSelector.category]);
 
+  const categorySelector = useSelector(
+    (state) => state.commonData.singleProductCatigory
+  );
+
+  // console.log(data);
+  // const categoryArr = data.filter(
+  //   (item) => item.category === categorySelector.category
+  // );
+  console.log(categorySelector);
+
   const info = useSelector((state) => state.commonData.singleProduct).slice();
 
   const removeProduct = info.findIndex(
@@ -40,8 +50,6 @@ export const SingleProductSwiper = () => {
   const selectedProduct = (id) => {
     navigate(`/home/${id}/single-product`);
   };
-
-
 
   return (
     <Swiper

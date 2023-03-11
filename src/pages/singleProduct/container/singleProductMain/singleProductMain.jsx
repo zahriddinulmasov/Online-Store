@@ -37,8 +37,6 @@ export const SingleProductMain = () => {
         // eslint-disable-next-line
   }, [params]);
 
-  console.log(params, data);
-
   function changeHiddenNumber1() {
     if (number1 !== "66 66") {
       setNumber1("66 66");
