@@ -1,4 +1,4 @@
-import { CardMedia, InputBase, Slider } from "@mui/material";
+import { CardMedia, InputBase } from "@mui/material";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 
@@ -209,7 +209,7 @@ export const TopAnnouncements = () => {
           </Box>
 
           <Box>
-            
+
           </Box>
         </Box>
       </Box>
