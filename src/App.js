@@ -10,8 +10,13 @@ import { Home } from "./pages/home";
 import { Error } from "./pages/error";
 import { Footer } from "./container/footer/footer";
 import { SingleProduct } from "./pages/singleProduct";
+import { Login } from "./pages/login/login";
+import { Registration } from "./pages/registration/registration";
+
+// const token = window.localStorage.getItem("token");
 
 function App() {
+  // const [token, setToken] = useState(false);
   return (
     <div className="App">
       <Header />
@@ -29,11 +34,17 @@ function App() {
         <Route path="/shops" element={<Shops />} />
         <Route path="/for-business" element={<ForBusiness />} />
         <Route path="/help" element={<Help />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registration" element={<Registration />} />
+
 
         <Route path="*" element={<Error />} />
       </Routes>
 
-      <Footer/>
+      {/* <Routes>
+        </Routes> */}
+
+      <Footer />
     </div>
   );
 }

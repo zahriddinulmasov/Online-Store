@@ -1,51 +1,59 @@
 import "./header.scss";
 
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
+
+import Drawer from "react-modern-drawer";
+import "react-modern-drawer/dist/index.css";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import CardMedia from "@mui/material/CardMedia";
 
 import siteLogo from "../../assets/images/kivi.svg";
+import { Button, Divider, ListItemText, MenuList, Paper } from "@mui/material";
+
+import home from "../../assets/images/home.png";
+import announcements from "../../assets/images/announcements.svg";
+import shops from "../../assets/images/shops.png";
+import forBusiness from "../../assets/images/forBusiness.png";
+import help from "../../assets/images/help.webp";
+import enter from "../../assets/images/enter.png";
 
 const pages = [
-  { id: "1", path: "/announcements", name: "Обьявления" },
-  { id: "2", path: "/shops", name: "Магазины" },
-  { id: "3", path: "/for-business", name: "Для бизнеса" },
-  { id: "4", path: "/help", name: "Помощь" },
+  { id: "1", path: "/", name: "Главная страница", img: home },
+  { id: "2", path: "/announcements", name: "Обьявления", img: announcements },
+  { id: "3", path: "/shops", name: "Магазины", img: shops },
+  { id: "4", path: "/for-business", name: "Для бизнеса", img: forBusiness },
+  { id: "5", path: "/help", name: "Помощь", img: help },
 ];
+
+const pagesDesktop = pages.slice(1)
+
 const settings = [
-  { id: "1", path: "/profile", name: "Вход" },
-  { id: "2", path: "/registration", name: "Регистрация" },
+  { id: "6", path: "/login", name: "Вход", img: enter },
 ];
 
 export const Header = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  const token = window.localStorage.getItem("token");
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const handleLogin = () => {
+    window.localStorage.removeItem("token");
+    navigate("/login");
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const toggleDrawer = () => {
+    setIsOpen((prevState) => !prevState);
   };
 
   return (
@@ -87,51 +95,69 @@ export const Header = () => {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+              onClick={toggleDrawer}
               color="#000000"
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem
-                  key={page.id}
-                  onClick={handleCloseNavMenu}
-                  sx={{ p: "4px 8px" }}
-                >
-                  <NavLink
-                    to={`${page.path}`}
-                    style={{
-                      padding: "8px 16px",
-                      fontFamily: "IBM Plex Sans Arabic",
-                      width: "100%",
-                      textDecoration: "none",
-                      fontSize: "15px",
-                    }}
-                    className="headerLink"
-                  >
-                    {page.name}
-                  </NavLink>
-                </MenuItem>
-              ))}
-            </Menu>
+
+            <Drawer open={isOpen} onClose={toggleDrawer} direction="left">
+              <Paper sx={{ boxShadow: "none" }}>
+                <MenuList>
+                  {pages.map((page) => (
+                    <MenuItem key={page.id} sx={{ p: "4px 8px" }}>
+                      <NavLink
+                        to={page.path}
+                        style={{
+                          padding: "8px 16px",
+                          fontFamily: "IBM Plex Sans Arabic",
+                          width: "100%",
+                          textDecoration: "none",
+                          fontSize: "15px",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                        className="headerLink"
+                      >
+                        <CardMedia
+                          image={page.img}
+                          sx={{ width: "18px", height: "18px" }}
+                        />
+                        <ListItemText sx={{ ml: "12px" }}>
+                          {page.name}
+                        </ListItemText>
+                      </NavLink>
+                    </MenuItem>
+                  ))}
+                  <Divider />
+                  {settings.map((page) => (
+                    <MenuItem key={page.id} sx={{ p: "4px 8px" }}>
+                      <NavLink
+                        to={page.path}
+                        style={{
+                          padding: "8px 16px",
+                          fontFamily: "IBM Plex Sans Arabic",
+                          width: "100%",
+                          textDecoration: "none",
+                          fontSize: "15px",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                        className="headerLink"
+                      >
+                        <CardMedia
+                          image={page.img}
+                          sx={{ width: "18px", height: "18px" }}
+                        />
+                        <ListItemText sx={{ ml: "12px" }}>
+                          {page.name}
+                        </ListItemText>
+                      </NavLink>
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </Paper>
+            </Drawer>
           </Box>
           <CardMedia
             component="img"
@@ -168,17 +194,16 @@ export const Header = () => {
               display: { xs: "none", md: "flex", justifyContent: "center" },
             }}
           >
-            {pages.map((page) => (
+            {pagesDesktop.map((page) => (
               <NavLink
                 key={page.id}
                 to={`${page.path}`}
                 style={{
                   textDecoration: "none",
-                  padding: "6px 16px",
+                  padding: "6px 12px",
                   fontSize: "15px",
                 }}
-                className=  "headerLink"
-                onClick={handleCloseNavMenu}
+                className="headerLink"
               >
                 {page.name}
               </NavLink>
@@ -186,8 +211,8 @@ export const Header = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0, ml: "auto" }}>
-            <Tooltip title="Панель управления">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            {token ? (
+              <IconButton sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
                   src=""
@@ -197,43 +222,18 @@ export const Header = () => {
                   }}
                 />
               </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem    key={setting.id} onClick={handleCloseUserMenu}>
-                  <NavLink
-
-                    to={`${setting.path}`}
-                    style={{
-                      textDecoration: "none",
-                      padding: "6px 16px",
-                      fontSize: "15px",
-                    }}
-                    className={({ isActive }) =>
-                      isActive ? "active" : "headerLink"
-                    }
-                    onClick={handleCloseNavMenu}
-                  >
-                    {setting.name}
-                  </NavLink>
-                </MenuItem>
-              ))}
-            </Menu>
+            ) : (
+              <Button
+                onClick={handleLogin}
+                sx={{
+                  background: "#00CF67",
+                  color: "white",
+                  "&:hover": { opacity: 0.7, background: "#00CF67" },
+                }}
+              >
+                Contained
+              </Button>
+            )}
           </Box>
         </Toolbar>
       </Container>

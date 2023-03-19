@@ -30,15 +30,6 @@ export const SingleProductSwiper = () => {
     // eslint-disable-next-line
   }, [singleProductCardSelector.category]);
 
-  const categorySelector = useSelector(
-    (state) => state.commonData.singleProductCatigory
-  );
-
-  // console.log(data);
-  // const categoryArr = data.filter(
-  //   (item) => item.category === categorySelector.category
-  // );
-  console.log(categorySelector);
 
   const info = useSelector((state) => state.commonData.singleProduct).slice();
 

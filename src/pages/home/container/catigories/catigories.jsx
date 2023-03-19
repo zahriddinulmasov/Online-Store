@@ -472,16 +472,13 @@ export const Catigories = () => {
           disableRipple
           sx={{
             fontFamily: "IBM Plex Sans Arabic",
-            fontSize: { xs: "13px", sm: "14px", md: "15px" },
-            lineHeight: { xs: "16px", sm: "17px", md: "18px" },
+            fontSize: { xs: "14px",  md: "15px" },
+            lineHeight: { xs: "17px",  md: "18px" },
             fontWeight: 600,
+            textTransform: "inherit"
           }}
         >
-          {showMore === 15 ? (
-            "Покозать еще"
-          ) : (
-            "Свернуть"
-          )}
+          {showMore === 15 ? "Покозать еще" : "Свернуть"}
           {showMore === 15 ? (
             <KeyboardArrowDownIcon sx={{ ml: "6px" }} />
           ) : (

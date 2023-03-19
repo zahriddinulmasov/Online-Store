@@ -4,7 +4,6 @@ import Select from "@mui/material/Select";
 import { Box, Button, OutlinedInput, Tooltip, Typography } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
-// import { useSelector } from "react-redux";
 
 const regions = [
   {
@@ -105,14 +104,9 @@ export const SingleProductTop = () => {
   const [age, setAge] = useState("");
   const [category, setCategory] = useState("");
 
-
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-
-  // const categorySelector = useSelector((state) => state.commonData.information);
-  // const categoryArr = categorySelector.filter((item) => item.category === age);
-  // console.log(categoryArr);
 
   const handleChangeCategory = (event) => {
     setCategory(event.target.value);

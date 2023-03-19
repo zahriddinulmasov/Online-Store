@@ -70,11 +70,11 @@ export const SingleProductBottom = () => {
                 <Typography
                   variant="h5"
                   sx={{
-                    textTransform: "capitalize",
                     fontFamily: "IBM Plex Sans Arabic",
                     fontWeight: 700,
                     fontSize: { xs: "17px", sm: "21px", md: "24px" },
                     lineHeight: { xs: "22px", sm: "26px", md: "30px" },
+                    textTransform: "none",
                   }}
                 >
                   Похожие объявления
@@ -88,7 +88,7 @@ export const SingleProductBottom = () => {
                 <Typography
                   variant="h5"
                   sx={{
-                    textTransform: "capitalize",
+                    textTransform: "none",
                     fontFamily: "IBM Plex Sans Arabic",
                     fontWeight: 700,
                     fontSize: { xs: "17px", sm: "21px", md: "24px" },
