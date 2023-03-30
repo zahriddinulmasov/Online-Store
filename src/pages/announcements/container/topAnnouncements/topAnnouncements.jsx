@@ -32,7 +32,7 @@ const MenuProps = {
   },
 };
 
-const categories = [
+ export const categories = [
   {
     name: "Электроника",
     value: "electronics",

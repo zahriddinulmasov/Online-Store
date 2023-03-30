@@ -54,7 +54,11 @@ export const Header = () => {
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
-  };
+  }
+
+  const changeProfileIcon = () => {
+  navigate("/user-profile")
+  }
 
   return (
     <AppBar style={{ background: "white" }}>
@@ -131,7 +135,7 @@ export const Header = () => {
                   ))}
                   <Divider />
                   {settings.map((page) => (
-                    <MenuItem key={page.id} sx={{ p: "4px 8px" }}>
+                    <MenuItem key={page.id} onClick={handleLogin} sx={{ p: "4px 8px" }}>
                       <NavLink
                         to={page.path}
                         style={{
@@ -174,7 +178,7 @@ export const Header = () => {
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              mr: {xs: "8px", sm: "12px", md: "16px"},
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "IBM Plex Sans Arabic",
@@ -183,7 +187,7 @@ export const Header = () => {
               textDecoration: "none",
               maxWidth: "165px",
               lineHeight: "14px",
-              fontSize: { xs: "14px", sm: "15px" },
+              fontSize: { xs: "13.4px", sm: "15px" },
             }}
           >
             Продай, найди, купи все что пожелаешь…
@@ -212,7 +216,7 @@ export const Header = () => {
 
           <Box sx={{ flexGrow: 0, ml: "auto" }}>
             {token ? (
-              <IconButton sx={{ p: 0 }}>
+              <IconButton onClick={changeProfileIcon} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
                   src=""
@@ -226,12 +230,16 @@ export const Header = () => {
               <Button
                 onClick={handleLogin}
                 sx={{
+                  height: "26px",
                   background: "#00CF67",
+                  fontSize: {xs: "14px", sms: "15px", md: "16px"},
+                  fontFamily: "IBM Plex Sans Arabic",
                   color: "white",
+                  textTransform: "inherit",
                   "&:hover": { opacity: 0.7, background: "#00CF67" },
                 }}
               >
-                Contained
+                Log in
               </Button>
             )}
           </Box>

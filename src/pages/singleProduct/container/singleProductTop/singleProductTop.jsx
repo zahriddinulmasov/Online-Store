@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { Box, Button, OutlinedInput, Tooltip, Typography } from "@mui/material";
@@ -104,6 +106,8 @@ export const SingleProductTop = () => {
   const [age, setAge] = useState("");
   const [category, setCategory] = useState("");
 
+  const navigate = useNavigate();
+
   const handleChange = (event) => {
     setAge(event.target.value);
   };
@@ -112,9 +116,14 @@ export const SingleProductTop = () => {
     setCategory(event.target.value);
   };
 
+  const handleClick = () => {
+    navigate("/to-announce");
+  };
+
   return (
     <Box
       sx={{
+        mt: { xs: "75px", sm: "85px", md: "105px" },
         p: {
           xs: "0 20px",
           sm: "0 20px ",
@@ -125,7 +134,7 @@ export const SingleProductTop = () => {
     >
       <Box
         sx={{
-          mr: "12px",
+          mr: {xs: 0, sm: "12px"},
           borderRadius: "22px",
           display: "flex",
           width: "100%",
@@ -225,14 +234,15 @@ export const SingleProductTop = () => {
           <Tooltip title="Добавить обьявления">
             <Box
               component="button"
+              onClick={handleClick}
               sx={{
                 p: 0,
                 m: " 0 0 8px 12px",
                 borderRadius: "22px",
                 display: { xs: "flex", sm: "none" },
-
                 border: "0",
                 cursor: "pointer",
+
                 ":hover": { opacity: 0.8 },
               }}
             >
@@ -257,6 +267,7 @@ export const SingleProductTop = () => {
 
       <Box
         component="button"
+        onClick={handleClick}
         sx={{
           mb: "8px",
           maxWidth: { xs: "170px", md: "240px" },

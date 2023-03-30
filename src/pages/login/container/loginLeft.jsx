@@ -1,5 +1,4 @@
 import {
-  Alert,
   Box,
   Button,
   FormControl,
@@ -39,16 +38,16 @@ export const LoginLeft = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => { console.log(data);
+      .then((data) => {
         if (data.token) {
           window.localStorage.setItem("token", data.token);
-
           navigate("/");
-        } else {
-          <Alert severity="error">This is an error alert — check it out!</Alert>
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert("Excuse me! Wrong login or password?");
+      });
   };
 
   return (

@@ -8,6 +8,7 @@ import { Catigories } from "./container/catigories";
 import { ProductTypes } from "./container/productTypes";
 
 import { AppHome } from "./container/appHome";
+import { SingleProductTop } from "../singleProduct/container/singleProductTop/singleProductTop";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export const Home = () => {
 
   return (
     <Box>
+      <SingleProductTop/>
       <Catigories />
       <ProductTypes />
       <AppHome />

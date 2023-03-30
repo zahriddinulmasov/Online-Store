@@ -45,6 +45,7 @@ TabPanel.propTypes = {
 };
 
 export const Catigories = () => {
+  const [value, setValue] = useState(0);
   const [showMore, setShowMore] = useState(15);
 
   const changeShowMore = () => {
@@ -54,6 +55,44 @@ export const Catigories = () => {
       return setShowMore(showMore - 5);
     }
   };
+
+  const categories = [
+    {
+      name: "Общий",
+      background: "#B4E2E1",
+      image: common,
+      value: "",
+      id: 1,
+    },
+    {
+      name: "Электроника",
+      background: "#F6DAC2",
+      image: electronics,
+      value: "electronics",
+      id: 2,
+    },
+    {
+      name: "Украшения",
+      background: "#F7E233",
+      image: jewelery,
+      value: "jewelery",
+      id: 3,
+    },
+    {
+      name: "Мужская одежда",
+      background: "#B6CAFB",
+      image: men,
+      value: "men's clothing",
+      id: 4,
+    },
+    {
+      name: "Женская одежда",
+      background: "#FF9E83",
+      image: women,
+      value: "women's clothing",
+      id: 5,
+    },
+  ];
 
   const informations = useSelector((state) => state.commonData.information);
 
@@ -75,8 +114,6 @@ export const Catigories = () => {
     (item) => item.category === "women's clothing"
   );
 
-  const [value, setValue] = useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -88,7 +125,7 @@ export const Catigories = () => {
   };
 
   return (
-    <Box sx={{ mt: "56px" }}>
+    <Box>
       <Box
         sx={{
           p: {
@@ -108,250 +145,57 @@ export const Catigories = () => {
           variant="scrollable"
           aria-label="basic tabs example"
         >
-          <Tab
-            sx={{
-              p: { xs: "7px 8px", sm: "10px 12px", md: "12px 16px" },
-            }}
-            label={
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
+          {categories.map((item) => (
+            <Tab
+              key={item.id}
+              sx={{
+                p: { xs: "7px 8px", sm: "10px 12px", md: "12px 16px" },
+              }}
+              label={
                 <Box
                   sx={{
-                    mb: "6px",
-                    background: "#B4E2E1",
-                    width: { xs: "55px", sm: "65px", md: "75px" },
-                    height: { xs: "55px", sm: "65px", md: "75px" },
                     display: "flex",
                     alignItems: "center",
-                    borderRadius: "20px",
+                    flexDirection: "column",
                   }}
                 >
-                  <CardMedia
-                    component="img"
-                    src={common}
-                    alt="Photo All"
+                  <Box
                     sx={{
-                      m: "0 auto",
-                      width: { xs: "30px", sm: "40px", md: "45px" },
+                      mb: "6px",
+                      background: `${item.background}`,
+                      width: { xs: "55px", sm: "65px", md: "75px" },
+                      height: { xs: "55px", sm: "65px", md: "75px" },
+                      display: "flex",
+                      alignItems: "center",
+                      borderRadius: "20px",
                     }}
-                  />
-                </Box>
-                <Typography
-                  variant="p"
-                  sx={{
-                    fontFamily: "IBM Plex Sans Arabic",
-                    fontWeight: 700,
-                    fontSize: { xs: "11px", sm: "13px", md: "14px" },
-                    lineHeight: "17px",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  Общий
-                </Typography>
-              </Box>
-            }
-          />
-
-          <Tab
-            sx={{
-              p: { xs: "7px 8px", sm: "10px 12px", md: "12px 16px" },
-            }}
-            label={
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <Box
-                  sx={{
-                    mb: "6px",
-                    background: "#F6DAC2",
-                    width: { xs: "55px", sm: "65px", md: "75px" },
-                    height: { xs: "55px", sm: "65px", md: "75px" },
-                    display: "flex",
-                    alignItems: "center",
-                    borderRadius: "20px",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    src={electronics}
-                    alt="Photo electronics"
+                  >
+                    <CardMedia
+                      component="img"
+                      src={item.image}
+                      alt="Photo All"
+                      sx={{
+                        m: "0 auto",
+                        width: { xs: "30px", sm: "40px", md: "45px" },
+                      }}
+                    />
+                  </Box>
+                  <Typography
+                    variant="p"
                     sx={{
-                      m: "0 auto",
-                      width: { xs: "30px", sm: "40px", md: "45px" },
+                      fontFamily: "IBM Plex Sans Arabic",
+                      fontWeight: 700,
+                      fontSize: { xs: "11px", sm: "13px", md: "14px" },
+                      lineHeight: "17px",
+                      textTransform: "capitalize",
                     }}
-                  />
+                  >
+                    {item.name}
+                  </Typography>
                 </Box>
-                <Typography
-                  variant="p"
-                  sx={{
-                    fontFamily: "IBM Plex Sans Arabic",
-                    fontWeight: 700,
-                    fontSize: { xs: "11px", sm: "13px", md: "14px" },
-                    lineHeight: "17px",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  Электроника
-                </Typography>
-              </Box>
-            }
-          />
-
-          <Tab
-            sx={{
-              p: { xs: "7px 8px", sm: "10px 12px", md: "12px 16px" },
-            }}
-            label={
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <Box
-                  sx={{
-                    mb: "6px",
-                    background: "#F7E233",
-                    width: { xs: "55px", sm: "65px", md: "75px" },
-                    height: { xs: "55px", sm: "65px", md: "75px" },
-                    display: "flex",
-                    alignItems: "center",
-                    borderRadius: "20px",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    src={jewelery}
-                    alt="Photo jewelery"
-                    sx={{
-                      m: "0 auto",
-                      width: { xs: "30px", sm: "40px", md: "45px" },
-                    }}
-                  />
-                </Box>
-                <Typography
-                  variant="p"
-                  sx={{
-                    fontFamily: "IBM Plex Sans Arabic",
-                    fontWeight: 700,
-                    fontSize: { xs: "11px", sm: "13px", md: "14px" },
-                    lineHeight: "17px",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  Украшения
-                </Typography>
-              </Box>
-            }
-          />
-
-          <Tab
-            sx={{
-              p: { xs: "7px 8px", sm: "10px 12px", md: "12px 16px" },
-            }}
-            label={
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <Box
-                  sx={{
-                    mb: "6px",
-                    background: "#B6CAFB",
-                    width: { xs: "55px", sm: "65px", md: "75px" },
-                    height: { xs: "55px", sm: "65px", md: "75px" },
-                    display: "flex",
-                    alignItems: "center",
-                    borderRadius: "20px",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    src={men}
-                    alt="Photo men's clothing"
-                    sx={{
-                      m: "0 auto",
-                      width: { xs: "30px", sm: "40px", md: "45px" },
-                    }}
-                  />
-                </Box>
-                <Typography
-                  variant="p"
-                  sx={{
-                    fontFamily: "IBM Plex Sans Arabic",
-                    fontWeight: 700,
-                    fontSize: { xs: "11px", sm: "13px", md: "14px" },
-                    lineHeight: "17px",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  мужская одежда
-                </Typography>
-              </Box>
-            }
-          />
-
-          <Tab
-            sx={{
-              p: { xs: "7px 8px", sm: "10px 12px", md: "12px 16px" },
-            }}
-            label={
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <Box
-                  sx={{
-                    mb: "6px",
-                    background: "#FF9E83",
-                    width: { xs: "55px", sm: "65px", md: "75px" },
-                    height: { xs: "55px", sm: "65px", md: "75px" },
-                    display: "flex",
-                    alignItems: "center",
-                    borderRadius: "20px",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    src={women}
-                    alt="Photo women's clothing"
-                    sx={{
-                      m: "0 auto",
-                      width: { xs: "37px", sm: "47px", md: "52px" },
-                    }}
-                  />
-                </Box>
-                <Typography
-                  variant="p"
-                  sx={{
-                    fontFamily: "IBM Plex Sans Arabic",
-                    fontWeight: 700,
-                    fontSize: { xs: "11px", sm: "13px", md: "14px" },
-                    lineHeight: "17px",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  Женская одежда
-                </Typography>
-              </Box>
-            }
-          />
+              }
+            />
+          ))}
         </Tabs>
       </Box>
 
@@ -472,10 +316,10 @@ export const Catigories = () => {
           disableRipple
           sx={{
             fontFamily: "IBM Plex Sans Arabic",
-            fontSize: { xs: "14px",  md: "15px" },
-            lineHeight: { xs: "17px",  md: "18px" },
+            fontSize: { xs: "14px", md: "15px" },
+            lineHeight: { xs: "17px", md: "18px" },
             fontWeight: 600,
-            textTransform: "inherit"
+            textTransform: "inherit",
           }}
         >
           {showMore === 15 ? "Покозать еще" : "Свернуть"}

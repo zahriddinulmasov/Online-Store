@@ -53,7 +53,7 @@ export const FooterBottom = () => {
             <Typography
               sx={{padding: {xs: "3px 12px 3px 0", sm: "4px 12px 4px 0", md: "6px 12px 6px 0"},
                 fontWeight: 500,
-                width: {xs: "108px", sm: "120px", md: "125px"},
+                width: {xs: "110px", sm: "122px", md: "128px"},
                 fontSize: { xs: "13px", sm: "14px", md: "15px" },
                 lineHeight: { xs: "16px", sm: "17px", md: "18px" },
                 color: "#878F99",

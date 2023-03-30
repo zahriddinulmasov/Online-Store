@@ -12,6 +12,8 @@ import { Footer } from "./container/footer/footer";
 import { SingleProduct } from "./pages/singleProduct";
 import { Login } from "./pages/login/login";
 import { Registration } from "./pages/registration/registration";
+import { ToAnnounce } from "./pages/toAnnounce/toAnnounce";
+import { ProfilePage } from "./pages/profilePage/profilePage";
 
 // const token = window.localStorage.getItem("token");
 
@@ -28,15 +30,17 @@ function App() {
           path="/home/:homeId/single-product"
           element={<SingleProduct />}
         />
+        <Route path="/to-announce" element={<ToAnnounce />} />
 
         <Route path="/announcements" element={<Announcements />} />
 
         <Route path="/shops" element={<Shops />} />
         <Route path="/for-business" element={<ForBusiness />} />
         <Route path="/help" element={<Help />} />
+        <Route path="/user-profile" element={<ProfilePage />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
-
 
         <Route path="*" element={<Error />} />
       </Routes>
