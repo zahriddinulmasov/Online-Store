@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 
+import "./to.css";
+
 import {
   Autocomplete,
   Box,
@@ -300,7 +302,6 @@ export const ToAnnounce = () => {
 
         <Box sx={{ mb: "12px" }}>
           <NameProduct title="Местоположение объекта" />
-
           <Box
             sx={{
               m: " 12px 0 8px",
@@ -334,9 +335,11 @@ export const ToAnnounce = () => {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95922.10083975263!2d69.26985975591059!3d41.29655667916361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b4aa5cb98!2z0KLQsNGI0LrQtdC90YIsINCj0LfQsdC10LrQuNGB0YLQsNC9!5e0!3m2!1sru!2suk!4v1679677064575!5m2!1sru!2suk"
             width="100%"
             height="450"
-            // allowfullscreen=""
+            id="myIframe"
+            title="www"
+            allowfullscreen=""
             loading="lazy"
-            // referrerpolicy="no-referrer-when-downgrade"
+            referrerpolicy="no-referrer-when-downgrade"
             alt="some alt text"
           ></iframe>
         </Box>
