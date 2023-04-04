@@ -11,7 +11,6 @@ export const ProfileBtn = () => {
           width: "100%",
           display: { xs: "none", sm: "flex" },
           alignItems: "center",
-          // backgroundColor: "#41D481",
           borderRadius: "23px 5px 5px 23px",
           border: "1px solid #41D481",
           textTransform: "inherit",
@@ -21,7 +20,8 @@ export const ProfileBtn = () => {
         <AddIcon
           sx={{
             p: "10px",
-            ml: { xs: "9px", md: "15px" },
+            mr: "-37px",
+            // ml: { xs: "9px", md: "15px" },
             borderRadius: "50%",
             background: "#41D481",
           }}
@@ -29,8 +29,9 @@ export const ProfileBtn = () => {
 
         <Typography
           sx={{
-            ml: "-44px",
-            p: " 0 33px 0 53px",
+            // ml: "-23px",
+            // ml: "-44px",
+            p: " 0 23px 0 49px",
             fontWeight: 500,
             fontSize: { xs: "14px", sm: "15px", md: "16px" },
             lineHeight: { xs: "17px", sm: "18px", md: "19px" },

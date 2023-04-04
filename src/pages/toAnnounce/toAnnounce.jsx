@@ -1,8 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 
-import "./to.css";
-
 import {
   Autocomplete,
   Box,
@@ -11,6 +9,7 @@ import {
   IconButton,
   Input,
   InputAdornment,
+  Link,
   Radio,
   RadioGroup,
   TextareaAutosize,
@@ -336,10 +335,8 @@ export const ToAnnounce = () => {
             width="100%"
             height="450"
             id="myIframe"
-            title="www"
-            allowfullscreen=""
+            title="The location of the ad"
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
             alt="some alt text"
           ></iframe>
         </Box>
@@ -398,12 +395,12 @@ export const ToAnnounce = () => {
           <Button
             onClick={addNewProduct}
             sx={{
-              margin: "0 auto",
-              padding: "12px 30px",
+              mr: "20px",
+              padding: { xs: "8px 20px", sm: "10px 25px", md: "12px 30px" },
               fontFamily: "IBM Plex Sans Arabic",
               fontWeight: 500,
-              fontSize: "19px",
-              lineHeight: "23px",
+              fontSize: { xs: "15px", sm: "17px", md: "19px" },
+              lineHeight: { xs: "19px", sm: "21px", md: "23px" },
               color: "#000000",
               background: "#19D476",
               borderRadius: "13px",
@@ -413,6 +410,17 @@ export const ToAnnounce = () => {
           >
             Добавить
           </Button>
+          <Link
+            href="#"
+            sx={{
+              fontFamily: "IBM Plex Sans Arabic",
+              fontWeight: 500,
+              fontSize: { xs: "15px", sm: "17px", md: "19px" },
+              lineHeight: { xs: "19px", sm: "21px", md: "23px" },
+            }}
+          >
+            Предпросмотр
+          </Link>
         </Box>
       </Box>
     </Box>

@@ -9,7 +9,7 @@ import { Divider } from "@mui/material";
 
 import { SingleProductTop } from "../singleProduct/container/singleProductTop";
 import { ProfileBtn } from "./components/profileBtn";
-import { AdsProfile } from "../adsProfile";
+import { AdsProfile } from "./components/adsProfile";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
