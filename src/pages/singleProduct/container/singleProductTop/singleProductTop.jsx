@@ -123,7 +123,7 @@ export const SingleProductTop = () => {
   return (
     <Box
       sx={{
-        mt: { xs: "75px", sm: "85px", md: "105px" },
+        mt: { xs: "17px", sm: "22px", md: "39px" },
         p: {
           xs: "0 20px",
           sm: "0 20px ",

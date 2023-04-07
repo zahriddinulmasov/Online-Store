@@ -20,8 +20,7 @@ export const ProfileBtn = () => {
         <AddIcon
           sx={{
             p: "10px",
-            mr: "-37px",
-            // ml: { xs: "9px", md: "15px" },
+            mr: {xs:"-27px", sm: "-17px"},
             borderRadius: "50%",
             background: "#41D481",
           }}
@@ -29,8 +28,6 @@ export const ProfileBtn = () => {
 
         <Typography
           sx={{
-            // ml: "-23px",
-            // ml: "-44px",
             p: " 0 23px 0 49px",
             fontWeight: 500,
             fontSize: { xs: "14px", sm: "15px", md: "16px" },
@@ -45,7 +42,6 @@ export const ProfileBtn = () => {
         <Box
           sx={{
             p: 0,
-            // border: "1px solid red",
             display: { xs: "flex", sm: "none" },
             borderRadius: "23px",
           }}

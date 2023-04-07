@@ -68,7 +68,6 @@ export const ProfilePage = () => {
           p: {
             xs: "8px 20px ",
             sm: "12px 24px ",
-            // md: "25px 24px 20px",
           },
         }}
       >
@@ -78,7 +77,6 @@ export const ProfilePage = () => {
               mr: { xs: "12px", sm: "12px", md: "30px" },
               width: "100%",
               display: "flex",
-              // alignItems: "center",
               justifyContent: "space-between",
               flexWrap: "wrap",
             }}

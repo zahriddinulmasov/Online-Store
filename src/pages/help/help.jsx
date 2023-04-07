@@ -1,10 +1,10 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export const Help = () => {
   return (
     <Box
       sx={{
-        mt: "76px",
+        mt: { xs: "10px", sm: "14px", md: "29px" },
         p: {
           xs: "10px 20px 10px",
           sm: "15px 24px 15px",
@@ -12,7 +12,7 @@ export const Help = () => {
         },
       }}
     >
-      <h1>Help page</h1>
+      <Typography variant="h3">Help page</Typography>
     </Box>
   );
 };

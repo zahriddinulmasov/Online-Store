@@ -168,7 +168,7 @@ const womenClothing = [
 
 export const Footer = () => {
   return (
-    <>
+    <Box>
       <Box
         sx={{
           p: {
@@ -203,13 +203,13 @@ export const Footer = () => {
                   lineHeight: { xs: "15px", sm: "16px", md: "17px" },
                   color: "#FFFFFF",
                   p: 0,
-                  m: 0
+                  m: 0,
                 }}
               >
                 Электроника
               </Typography>
             </AccordionSummary>
-            <AccordionDetails >
+            <AccordionDetails>
               {electronics.map((item) => (
                 <Link to="/" key={item.id} style={{ textDecoration: "none" }}>
                   <Typography
@@ -366,6 +366,6 @@ export const Footer = () => {
       </Box>
 
       <FooterBottom />
-    </>
+    </Box>
   );
 };

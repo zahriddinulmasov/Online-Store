@@ -150,13 +150,16 @@ export const ToAnnounce = () => {
   return (
     <Box
       sx={{
-        m: { xs: "56px 0 0", sm: "63px 0 0", md: "78px 0 0" },
+        mt: {
+          xs: "4px",
+          sm: "8px",
+          md: "19px",
+        },
         p: {
           xs: "10px 20px 10px",
           sm: "15px 24px 15px",
           md: "25px 24px 20px",
         },
-        background: "LightCyan",
       }}
     >
       <Box sx={{ mx: "auto", maxWidth: "700px" }}>

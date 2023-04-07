@@ -5,7 +5,7 @@ import { MainAnnouncements } from "./container/mainAnnouncements/mainAnnouncemen
 import { TopAnnouncements } from "./container/topAnnouncements";
 
 export const Announcements = () => {
-const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
@@ -14,11 +14,11 @@ const [data, setData] = useState([])
         setData(data.data);
       })
       .catch((err) => console.log(err));
-        // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return (
-    <Box sx={{ mt: { xs: "74px", sm: "84px", md: "99px" } }}>
+    <Box sx={{ mt: { xs: "10px", sm: "14px", md: "29px" } }}>
       <TopAnnouncements />
       <MainAnnouncements data={data} />
     </Box>
