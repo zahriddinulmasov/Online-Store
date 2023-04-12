@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { SwiperSlide, Swiper } from "swiper/react";
-import { CardHome } from "../../../home/components/cardHome";
+import { CardHome, SkeletonCard } from "../../../home/components/cardHome";
 
 export const SingleProductCardSwiperAuthor = () => {
   const navigate = useNavigate();
@@ -9,6 +9,8 @@ export const SingleProductCardSwiperAuthor = () => {
   const singleProductCard = [
     useSelector((state) => state.commonData.singleProductCatigory),
   ];
+  const infoSkeleton = singleProductCard.length === 1;
+  console.log(infoSkeleton);
 
   const selectedProduct = (id) => {
     navigate(`/home/${id}/single-product`);
@@ -43,17 +45,31 @@ export const SingleProductCardSwiperAuthor = () => {
         },
       }}
     >
-      {singleProductCard.map((item) => (
-        <SwiperSlide key={item.id}>
-          <CardHome
-            title={item.title}
-            img={item.image}
-            price={item.price}
-            id={item.id}
-            selected={selectedProduct.bind(null, item.id)}
-          />
-        </SwiperSlide>
-      ))}
+      {infoSkeleton ? (
+        singleProductCard.map((item) => (
+          <SwiperSlide key={item.id}>
+            <CardHome
+              title={item.title}
+              img={item.image}
+              price={item.price}
+              id={item.id}
+              selected={selectedProduct.bind(null, item.id)}
+            />
+          </SwiperSlide>
+        ))
+      ) : (
+        <>
+          <SwiperSlide>
+            <SkeletonCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SkeletonCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SkeletonCard />
+          </SwiperSlide>
+        </>
+      )}
     </Swiper>
   );
 };

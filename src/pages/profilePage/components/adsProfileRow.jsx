@@ -98,6 +98,9 @@ export const AdsProfileRow = () => {
                     fontSize="small"
                     sx={{
                       p: "10px",
+                      // height: "44px",
+                      // width: "44px",
+                      // mr: {xs:"-27px", sm: "-40px"},
                       borderRadius: "50%",
                       background: "#304FFF",
                     }}
@@ -120,6 +123,8 @@ export const AdsProfileRow = () => {
                 <NorthIcon
                   sx={{
                     p: "10px",
+                    height: "34px",
+                    width: "34px",
                     borderRadius: "50%",
                     background: "#304FFF",
                     color: "white",
@@ -186,6 +191,8 @@ export const AdsProfileRow = () => {
                 <NorthIcon
                   sx={{
                     p: "10px",
+                    height: "34px",
+                    width: "34px",
                     borderRadius: "50%",
                     background: "#41D481",
                     color: "white",

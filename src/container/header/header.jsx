@@ -1,7 +1,7 @@
 import "./header.scss";
 
 import { useState } from "react";
-import {  NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
@@ -18,7 +18,14 @@ import MenuItem from "@mui/material/MenuItem";
 import CardMedia from "@mui/material/CardMedia";
 
 import siteLogo from "../../assets/images/kivi.svg";
-import { Button, Divider, ListItemText, MenuList, Paper } from "@mui/material";
+import {
+  Button,
+  ListItemText,
+  Menu,
+  MenuList,
+  Paper,
+  Tooltip,
+} from "@mui/material";
 
 import home from "../../assets/images/home.png";
 import announcements from "../../assets/images/announcements.svg";
@@ -26,6 +33,8 @@ import shops from "../../assets/images/shops.png";
 import forBusiness from "../../assets/images/forBusiness.png";
 import help from "../../assets/images/help.webp";
 import enter from "../../assets/images/enter.png";
+
+import userIcon from "../../assets/images/userIcon.png";
 
 const pages = [
   { id: "1", path: "/", name: "Главная страница", img: home },
@@ -35,62 +44,85 @@ const pages = [
   { id: "5", path: "/help", name: "Помощь", img: help },
 ];
 
-const pagesDesktop = pages.slice(1)
+const pagesDesktop = pages.slice(1);
 
 const settings = [
   { id: "6", path: "/login", name: "Вход", img: enter },
+  { id: "7", path: "/profile", name: "Профиль" },
 ];
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [anchorElUser, setAnchorElUser] = useState(null);
   const navigate = useNavigate();
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   const token = window.localStorage.getItem("token");
 
   const handleLogin = () => {
     window.localStorage.removeItem("token");
+    setAnchorElUser(null);
     navigate("/login");
+  };
+
+  const handleMenuClose = () => {
+    setIsOpen((prevState) => !prevState);
   };
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
-  }
+  };
 
   const changeProfileIcon = () => {
-  navigate("/user-profile")
-  }
+    setAnchorElUser(null);
+    navigate("/user-profile");
+  };
+
+  const clickGoToTheMainPage = () => {
+    navigate("/");
+  };
 
   return (
     <AppBar style={{ background: "white" }}>
       <Container sx={{ padding: "0 20px" }}>
         <Toolbar disableGutters>
-          <CardMedia
-            component="img"
-            image={siteLogo}
-            alt="Site logo"
-            sx={{
-              m: "6px 12px 6px 0",
-              width: "67px",
-              display: { xs: "none", md: "flex" },
-            }}
-          />
-          <Typography
-            variant="h6"
-            component="a"
-            href="/"
-            sx={{
-              display: { xs: "none", md: "flex" },
-              fontFamily: "IBM Plex Sans Arabic",
-              fontWeight: 700,
-              color: "#000000",
-              textDecoration: "none",
-              maxWidth: "165px",
-              lineHeight: "17px",
-              fontSize: "15px",
-            }}
+          <Box
+            onClick={clickGoToTheMainPage}
+            sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
           >
-            Продай, найди, купи все что пожелаешь…
-          </Typography>
+            <CardMedia
+              component="img"
+              image={siteLogo}
+              alt="Site logo"
+              sx={{
+                m: "6px 12px 6px 0",
+                width: "67px",
+                display: { xs: "none", md: "flex" },
+              }}
+            />
+            <Typography
+              variant="h6"
+              sx={{
+                display: { xs: "none", md: "flex" },
+                fontFamily: "IBM Plex Sans Arabic",
+                fontWeight: 700,
+                color: "#000000",
+                textDecoration: "none",
+                maxWidth: "165px",
+                lineHeight: "17px",
+                fontSize: "15px",
+              }}
+            >
+              Продай, найди, купи все что пожелаешь…
+            </Typography>
+          </Box>
 
           <Box sx={{ display: { xs: "flex", md: "none" }, mr: "auto" }}>
             <IconButton
@@ -109,7 +141,11 @@ export const Header = () => {
               <Paper sx={{ boxShadow: "none" }}>
                 <MenuList>
                   {pages.map((page) => (
-                    <MenuItem key={page.id} sx={{ p: "4px 8px" }}>
+                    <MenuItem
+                      key={page.id}
+                      onClick={handleMenuClose}
+                      sx={{ p: "4px 8px" }}
+                    >
                       <NavLink
                         to={page.path}
                         style={{
@@ -133,65 +169,45 @@ export const Header = () => {
                       </NavLink>
                     </MenuItem>
                   ))}
-                  <Divider />
-                  {settings.map((page) => (
-                    <MenuItem key={page.id} onClick={handleLogin} sx={{ p: "4px 8px" }}>
-                      <NavLink
-                        to={page.path}
-                        style={{
-                          padding: "8px 16px",
-                          fontFamily: "IBM Plex Sans Arabic",
-                          width: "100%",
-                          textDecoration: "none",
-                          fontSize: "15px",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                        className="headerLink"
-                      >
-                        <CardMedia
-                          image={page.img}
-                          sx={{ width: "18px", height: "18px" }}
-                        />
-                        <ListItemText sx={{ ml: "12px" }}>
-                          {page.name}
-                        </ListItemText>
-                      </NavLink>
-                    </MenuItem>
-                  ))}
+
                 </MenuList>
               </Paper>
             </Drawer>
           </Box>
-          <CardMedia
-            component="img"
-            image={siteLogo}
-            alt="Site logo"
-            sx={{
-              m: "0 8px 0 0",
-              width: { xs: "35px", sm: "45px", md: "24px" },
-              display: { xs: "flex", md: "none" },
-            }}
-          />
-          <Typography
-            variant="h5"
-            component="a"
-            href="/"
-            sx={{
-              mr: {xs: "8px", sm: "12px", md: "16px"},
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "IBM Plex Sans Arabic",
-              fontWeight: 700,
-              color: "#000000",
-              textDecoration: "none",
-              maxWidth: "165px",
-              lineHeight: "14px",
-              fontSize: { xs: "13.4px", sm: "15px" },
-            }}
+
+          <Box
+            onClick={clickGoToTheMainPage}
+            sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
           >
-            Продай, найди, купи все что пожелаешь…
-          </Typography>
+            <CardMedia
+              component="img"
+              image={siteLogo}
+              alt="Site logo"
+              sx={{
+                m: "0 8px 0 0",
+                width: { xs: "35px", sm: "45px", md: "24px" },
+                display: { xs: "flex", md: "none" },
+              }}
+            />
+            <Typography
+              variant="h5"
+              sx={{
+                mr: { xs: "8px", sm: "12px", md: "16px" },
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "IBM Plex Sans Arabic",
+                fontWeight: 700,
+                color: "#000000",
+                textDecoration: "none",
+                maxWidth: "165px",
+                lineHeight: "14px",
+                fontSize: { xs: "13.4px", sm: "15px" },
+              }}
+            >
+              Продай, найди, купи все что пожелаешь…
+            </Typography>
+          </Box>
+
           <Box
             sx={{
               flexGrow: 1,
@@ -214,25 +230,57 @@ export const Header = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0, ml: "auto" }}>
+          <Box sx={{ flexGrow: 0, ml: "auto" }} component="div">
             {token ? (
-              <IconButton onClick={changeProfileIcon} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src=""
-                  sx={{
-                    width: { xs: "36px", sm: "40px" },
-                    height: { xs: "36px", sm: "40px" },
+              <Box component="div">
+                <Tooltip title="Открыть настройки">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src={userIcon}
+                      sx={{
+                        width: { xs: "36px", sm: "40px" },
+                        height: { xs: "36px", sm: "40px" },
+                      }}
+                    />
+                  </IconButton>
+                </Tooltip>
+
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
                   }}
-                />
-              </IconButton>
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem
+                      key={setting.id}
+                      onClick={
+                        setting.id === "7" ? changeProfileIcon : handleLogin
+                      }
+                    >
+                      <Typography textAlign="center">{setting.name}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
             ) : (
               <Button
                 onClick={handleLogin}
                 sx={{
                   height: "26px",
                   background: "#00CF67",
-                  fontSize: {xs: "14px", sms: "15px", md: "16px"},
+                  fontSize: { xs: "14px", sms: "15px", md: "16px" },
                   fontFamily: "IBM Plex Sans Arabic",
                   color: "white",
                   textTransform: "inherit",

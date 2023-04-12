@@ -18,6 +18,8 @@ import jewelery from "../../../../assets/images/jewelery.png";
 import men from "../../../../assets/images/men.png";
 import women from "../../../../assets/images/women.png";
 
+import { SkeletonCard } from "../../components/cardHome";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -95,6 +97,7 @@ export const Catigories = () => {
   ];
 
   const informations = useSelector((state) => state.commonData.information);
+  const infoSkeleton = informations.length > 0;
 
   const copyInformations = informations.slice(0, showMore);
 
@@ -211,90 +214,125 @@ export const Catigories = () => {
           flexWrap: "wrap",
         }}
       >
-        {copyInformations.map((item) => (
-          <TabPanel
-            value={value}
-            index={0}
-            key={item.id}
-            sx={{ width: "100%" }}
-          >
-            <CardHome
-              title={item.title}
-              img={item.image}
-              price={item.price}
-              id={item.id}
-              selected={selectedProduct.bind(null, item.id)}
-            />
-          </TabPanel>
-        ))}
+        {infoSkeleton ? (
+          copyInformations.map((item) => (
+            <TabPanel
+              value={value}
+              index={0}
+              key={item.id}
+              sx={{ width: "100%" }}
+            >
+              <CardHome
+                title={item.title}
+                img={item.image}
+                price={item.price}
+                id={item.id}
+                selected={selectedProduct.bind(null, item.id)}
+              />
+            </TabPanel>
+          ))
+        ) : (
+          <>
+            <SkeletonCard />
+            <SkeletonCard />
+          </>
+        )}
 
-        {categoryElectronics.map((item) => (
-          <TabPanel
-            value={value}
-            index={1}
-            key={item.id}
-            sx={{ width: "100%" }}
-          >
-            <CardHome
-              title={item.title}
-              img={item.image}
-              price={item.price}
-              id={item.id}
-              selected={selectedProduct.bind(null, item.id)}
-            />
-          </TabPanel>
-        ))}
+        {infoSkeleton ? (
+          categoryElectronics.map((item) => (
+            <TabPanel
+              value={value}
+              index={1}
+              key={item.id}
+              sx={{ width: "100%" }}
+            >
+              <CardHome
+                title={item.title}
+                img={item.image}
+                price={item.price}
+                id={item.id}
+                selected={selectedProduct.bind(null, item.id)}
+              />
+            </TabPanel>
+          ))
+        ) : (
+          <>
+            <SkeletonCard />
+            <SkeletonCard />
+          </>
+        )}
 
-        {categoryJewelery.map((item) => (
-          <TabPanel
-            value={value}
-            index={2}
-            key={item.id}
-            sx={{ width: "100%" }}
-          >
-            <CardHome
-              title={item.title}
-              img={item.image}
-              price={item.price}
-              id={item.id}
-              selected={selectedProduct.bind(null, item.id)}
-            />
-          </TabPanel>
-        ))}
+        {infoSkeleton ? (
+          categoryJewelery.map((item) => (
+            <TabPanel
+              value={value}
+              index={2}
+              key={item.id}
+              sx={{ width: "100%" }}
+            >
+              <CardHome
+                title={item.title}
+                img={item.image}
+                price={item.price}
+                id={item.id}
+                selected={selectedProduct.bind(null, item.id)}
+              />
+            </TabPanel>
+          ))
+        ) : (
+          <>
+            <SkeletonCard />
+            <SkeletonCard />
+          </>
+        )}
 
-        {categoryMenClothing.map((item) => (
-          <TabPanel
-            value={value}
-            index={3}
-            key={item.id}
-            sx={{ width: "100%" }}
-          >
-            <CardHome
-              title={item.title}
-              img={item.image}
-              price={item.price}
-              id={item.id}
-              selected={selectedProduct.bind(null, item.id)}
-            />
-          </TabPanel>
-        ))}
+        {infoSkeleton ? (
+          categoryMenClothing.map((item) => (
+            <TabPanel
+              value={value}
+              index={3}
+              key={item.id}
+              sx={{ width: "100%" }}
+            >
+              <CardHome
+                title={item.title}
+                img={item.image}
+                price={item.price}
+                id={item.id}
+                selected={selectedProduct.bind(null, item.id)}
+              />
+            </TabPanel>
+          ))
+        ) : (
+          <>
+            <SkeletonCard />
+            <SkeletonCard />
+          </>
+        )}
 
-        {categoryWomenClothing.map((item) => (
-          <TabPanel
-            value={value}
-            index={4}
-            key={item.id}
-            sx={{ width: "100%" }}
-          >
-            <CardHome
-              title={item.title}
-              img={item.image}
-              price={item.price}
-              id={item.id}
-              selected={selectedProduct.bind(null, item.id)}
-            />
-          </TabPanel>
-        ))}
+        {infoSkeleton ? (
+          categoryWomenClothing.map((item) => (
+            <TabPanel
+              value={value}
+              index={4}
+              key={item.id}
+              sx={{ width: "100%" }}
+            >
+              <CardHome
+                title={item.title}
+                img={item.image}
+                price={item.price}
+                id={item.id}
+                selected={selectedProduct.bind(null, item.id)}
+              />
+            </TabPanel>
+          ))
+        ) : (
+          <>
+            <SkeletonCard />
+            <SkeletonCard />
+          </>
+        )}
       </Box>
 
       <Box

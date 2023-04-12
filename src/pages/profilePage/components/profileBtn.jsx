@@ -20,7 +20,9 @@ export const ProfileBtn = () => {
         <AddIcon
           sx={{
             p: "10px",
-            mr: {xs:"-27px", sm: "-17px"},
+            height: "34px",
+            width: "34px",
+            mr: {xs:"-27px", sm: "-32px"},
             borderRadius: "50%",
             background: "#41D481",
           }}

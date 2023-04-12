@@ -2,10 +2,59 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { CardHome } from "../../../home/components/cardHome";
+import { CardHome, SkeletonCard } from "../../../home/components/cardHome";
 import { mainInformationActions } from "../../../../store/commonData";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Card, CardActionArea, CardContent, Skeleton } from "@mui/material";
+
+export const SkeletonSingleCard = () => {
+  return (
+    <>
+      <SwiperSlide>
+        <Card
+          sx={{
+            margin: { xs: "3px", sm: "5px", md: "8px", lg: "10px" },
+            width: { xs: "139px", sm: "155px", md: "175px", lg: "210px" },
+            background: "white",
+          }}
+        >
+          <CardActionArea>
+            <Skeleton
+              variant="rectangular"
+              width="100%"
+              sx={{
+                height: { xs: "135px", sm: "150px", md: "170px", lg: "200px" },
+              }}
+            />
+            <CardContent
+              sx={{
+                padding: { xs: "9px 6px", sm: "10px 7px", md: "12px 8px" },
+              }}
+            >
+              <Skeleton
+                sx={{
+                  height: { xs: "13px", sm: "16px", md: "18px" },
+                  width: "100%",
+                }}
+              />
+              <Skeleton
+                sx={{
+                  height: { xs: "13px", sm: "16px", md: "18px" },
+                  width: "60%",
+                }}
+              />
+              <Skeleton style={{ margin: "8px 0 2px 0", width: "40%" }} />
+
+              <Skeleton style={{ width: "30%", height: "25px" }} />
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        <SkeletonCard />
+      </SwiperSlide>
+    </>
+  );
+};
 
 export const SingleProductSwiper = () => {
   const navigate = useNavigate();
@@ -30,8 +79,8 @@ export const SingleProductSwiper = () => {
     // eslint-disable-next-line
   }, [singleProductCardSelector.category]);
 
-
   const info = useSelector((state) => state.commonData.singleProduct).slice();
+  const infoSkeleton = info.length > 0;
 
   const removeProduct = info.findIndex(
     (item) => item.id === singleProductCardSelector.id
@@ -71,17 +120,31 @@ export const SingleProductSwiper = () => {
         },
       }}
     >
-      {info.map((item) => (
-        <SwiperSlide key={item.id}>
-          <CardHome
-            title={item.title}
-            img={item.image}
-            price={item.price}
-            id={item.id}
-            selected={selectedProduct.bind(null, item.id)}
-          />
-        </SwiperSlide>
-      ))}
+      {infoSkeleton ? (
+        info.map((item) => (
+          <SwiperSlide key={item.id}>
+            <CardHome
+              title={item.title}
+              img={item.image}
+              price={item.price}
+              id={item.id}
+              selected={selectedProduct.bind(null, item.id)}
+            />
+          </SwiperSlide>
+        ))
+      ) : (
+        <>
+          <SwiperSlide>
+            <SkeletonCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SkeletonCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SkeletonCard />
+          </SwiperSlide>
+        </>
+      )}
     </Swiper>
   );
 };

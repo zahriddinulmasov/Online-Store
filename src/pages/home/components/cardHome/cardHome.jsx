@@ -4,7 +4,60 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-export const CardHome = ({ img, title, price, selected, id }) => {
+import PropTypes from "prop-types";
+import Skeleton from "@mui/material/Skeleton";
+
+export function SkeletonCard() {
+
+  return (
+    <Card
+      sx={{
+        margin: { xs: "3px", sm: "5px", md: "8px", lg: "10px" },
+        width: { xs: "139px", sm: "155px", md: "175px", lg: "210px" },
+        background: "white",
+      }}
+    >
+      <CardActionArea>
+        <Skeleton
+          variant="rectangular"
+          width="100%"
+          sx={{
+            height: { xs: "135px", sm: "150px", md: "170px", lg: "200px" },
+          }}
+        />
+        <CardContent
+          sx={{
+            padding: { xs: "9px 6px", sm: "10px 7px", md: "12px 8px" },
+          }}
+        >
+          <Skeleton
+            sx={{
+              height: { xs: "13px", sm: "16px", md: "18px" },
+              width: "100%",
+            }}
+          />
+          <Skeleton
+            sx={{
+              height: { xs: "13px", sm: "16px", md: "18px" },
+              width: "60%",
+            }}
+          />
+          <Skeleton style={{ margin: "8px 0 2px 0", width: "40%" }} />
+
+          <Skeleton style={{ width: "30%", height: "25px" }} />
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+SkeletonCard.propTypes = {
+  loading: PropTypes.bool,
+};
+
+export const CardHome = (props) => {
+  const { img, title, price, selected, id } = props;
+
   return (
     <>
       <Card
@@ -25,6 +78,7 @@ export const CardHome = ({ img, title, price, selected, id }) => {
               width: "auto",
             }}
           />
+
           <CardContent
             sx={{
               padding: { xs: "9px 6px", sm: "10px 7px", md: "12px 8px" },
